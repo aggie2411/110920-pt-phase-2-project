@@ -31,17 +31,21 @@ This repository offers an analysis of factors that influence housing prices in K
 
 ### Setup Instructions
 
-To run these notebooks independently, I have provided the environment.yml to clone to geo-env environment which contains all dependencies.
+To run these notebooks independently, I have provided the [environment.yml](environment.yml) to clone to geo-env environment which contains all dependencies.
 
 ## Scope of Project
 
 The purpose of this study is to undergo an inferential modeling workflow with the aim of determining which home improvements could have positive impacts on the sale value of a home.
 
-Data has been provided from [King County GIS Center](https://www.kingcounty.gov/gis) and the raw files are [here](data/raw)
+This project will focus on single family households and homes sold in 2019 - non residential property is outside of the scope.
+
+Data has been provided from [King County GIS Center](https://www.kingcounty.gov/gis) and the raw files are [here](data/raw/provided)
 
 ## Data Understanding
 
 TODO: add data understanding, including at least 3 high-quality visualizations
+
+![graph1](./images/zip_house_price.png)
 
 ## Data Preparation
 
