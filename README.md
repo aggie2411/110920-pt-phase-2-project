@@ -26,16 +26,18 @@ This repository offers an analysis of factors that influence housing prices in K
 
 ### Quick Links
 
-1. [Final Analysis Notebook](notebooks/exploratory/final_notebook.ipynb)
+1. [Final Analysis Notebook](notebooks/report/modelling.ipynb)
 2. [Presentation Slides](reports/presentation.pdf)
 
 ### Setup Instructions
 
-TODO: add setup instructions (e.g. the name of the Conda environment file)
+To run these notebooks independently, I have provided the environment.yml to clone to geo-env environment which contains all dependencies.
 
-## Business Understanding
+## Scope of Project
 
-TODO: add business understanding
+The purpose of this study is to undergo an inferential modeling workflow with the aim of determining which home improvements could have positive impacts on the sale value of a home.
+
+Data has been provided from [King County GIS Center](https://www.kingcounty.gov/gis) and the raw files are [here](data/raw)
 
 ## Data Understanding
 
