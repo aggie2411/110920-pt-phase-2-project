@@ -69,7 +69,7 @@ def get_resid(df, model):
     y = df['SalePrice']
     y_hat = model.predict()
     plt.figure(figsize=(8,5))
-    plt.axhline(y = 3, color = 'r', linestyle = '-')
+    plt.axhline(y = 0, color = 'r', linestyle = '-')
     plt.ylabel("Residuals (Actual - Predicted Sale Price)")
     plt.xlabel("Predicted Sale Price")
     plt.scatter(x=y_hat, y=y-y_hat, color="blue", alpha=0.2);
@@ -121,3 +121,14 @@ def get_multicol(df):
     new_df.drop_duplicates(inplace=True)
 
     return new_df[(new_df.cc>.70) & (new_df.cc <1)]
+
+def get_logresid(df, model, col):
+    y = df[col]
+    y_hat = model.predict()
+    plt.figure(figsize=(8,5))
+    plt.axhline(y = 0, color = 'r', linestyle = '-')
+    plt.ylabel("Residuals (Actual - Predicted Sale Price)")
+    plt.xlabel("Predicted Sale Price")
+    plt.scatter(x=y_hat, y=y-y_hat, color="blue", alpha=0.2);
+    plt.title('Residual Plot')
+    plt.show()
