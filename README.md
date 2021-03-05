@@ -45,7 +45,7 @@ Data has been provided from [King County GIS Center](https://www.kingcounty.gov/
 
 TODO: add data understanding, including at least 3 high-quality visualizations
 
-![graph1](images/zip_house_price.png)
+![graph1](./images/zip_house_price.PNG)
 
 ## Data Preparation
 
