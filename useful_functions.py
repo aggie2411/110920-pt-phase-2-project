@@ -132,3 +132,27 @@ def get_logresid(df, model, col):
     plt.scatter(x=y_hat, y=y-y_hat, color="blue", alpha=0.2);
     plt.title('Residual Plot')
     plt.show()
+    
+def get_map(df):
+    #Create base map zoomed in to seattle
+    map4=folium.Map(location=[47.5837012,-122.3984634],  tiles=None, zoom_start=7)
+    folium.TileLayer('cartodbpositron', name='King County House Prices').add_to(map4)
+
+    #Make Marker Cluster Group layer
+    mcg = folium.plugins.MarkerCluster(control=False)
+    map4.add_child(mcg)
+
+    #Create layer of markers
+    #Set marker popups to display name and address of service
+    for row in df.iterrows():
+        row_values=row[1]
+        location=[row_values['latitude'], row_values['longitude']]
+        popup=popup=('$' + str(row_values['SalePrice'])+'<br>'+'<br>'+ row_values['Address']+
+                     '<br>'+'<br>'+row_values['DistrictName'])
+        marker=folium.Marker(location=location, popup=popup, min_width=2000)
+        marker.add_to(mcg)
+
+    #Add layer control
+    folium.LayerControl().add_to(map4)
+
+    return map4
