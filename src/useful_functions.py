@@ -46,31 +46,70 @@ def lookup(df, lu_type):
 # In[4]:
 
 def show_box(df, col):
-    ''' shows boxplot of df[col] vs SalePrice'''
+    ''' 
+    returns boxplot of df[col] vs df['SalePrice]
+    
+    Parameters:
+    df: dataframe from which you want the col and SalePrice to be taken
+    col: column of interest that you want to plot 
+    
+    '''
     sns.boxplot(x=col, y="SalePrice", data=df)
 
 
 def replace_val(df, col, val1, val2):
+    ''' 
+    replaces all val1 entries in df[col] with val2
+    
+    Parameters:
+    df: dataframe of interest
+    col: column in which values will be changed
+    val1: value to be replaced
+    val2: new value
+    
+    '''
     df.loc[df[col]==val1, col] = val2
 # In[ ]:
 
 
 
 def get_dict(number, df):
+    """
+    Returns a dictionary for a specific lookup number in lookup_df
+    
+    Parameters:
+    df: will only work for lookup_df - need to refine this function
+    number: number in lookup_df 'LUItem' column that you want to map to a dictionary
+    
+    """
     df = lookup(df, number)
     dictionary = dict(zip(df['LUItem'].values, df['LUDescription'].str.strip().values))
     return dictionary
 
 def get_qq(model, name):
     ''' returns qq plot model is the name of the model
-    name is the plot title'''
+    name is the plot title
+    
+    Parameters:
+    model: sm.OLS().fit() - model which you want to see
+    name: name that will appear in qq plot title
+    
+    '''
     residuals = model.resid
     fig = sm.graphics.qqplot(residuals, line='45', fit=True)
     fig.suptitle('{} QQ Plot'.format(name), fontsize=12)
     fig.show()
     
 def get_resid(df, model):
-    ''' get residual plot'''
+    ''' 
+    returns actual minus predicted plot (y axis) vs predicted values (x axis)
+    for a given model. (residual plot) 
+    
+    Parameters:
+    model: sm.OLS().fit() - model which you want to see
+    df: dataframe from which you want Sale Price to be taken from    
+        
+    '''
     
     y = df['SalePrice']
     y_hat = model.predict()
@@ -107,7 +146,13 @@ def calc_distances(lat_long, area, df):
     return pd.Series(dists, index=df.index)
 
 def get_multicol(df):
-    '''Returns correlation dataframe showing all variable pairs and their respective correlation coefficient'''
+    '''
+    Returns correlation dataframe showing all variable pairs and their respective correlation coefficient between 0.7 and 1
+    
+    Parameters:
+    df: dataframe you want correlation pairs for 
+        
+    '''
     new_df=df.corr().abs().stack().reset_index().sort_values(0, ascending=False)
 
     # zip the variable name columns (Which were only named level_0 and level_1 by default) in a new column named "pairs"
@@ -129,7 +174,18 @@ def get_multicol(df):
     return new_df[(new_df.cc>.70) & (new_df.cc <1)]
 
 def get_logresid(df, model, col):
-    '''provide dataframe, model and column and you returns residual plot'''
+    '''
+    
+    returns actual minus predicted plot (y axis) vs predicted values (x axis)
+    for a given model. (residual plot) 
+    
+    Parameters:
+    model: sm.OLS().fit() - model which you want to see
+    df: dataframe from which you want Sale Price or other col to be taken from
+    col: column that represents actual values i.e SalePrice_log
+    
+    
+    '''
     y = df[col]
     y_hat = model.predict()
     plt.figure(figsize=(8,5))
@@ -141,8 +197,14 @@ def get_logresid(df, model, col):
     plt.show()
     
 def get_map(df):
-    '''provide dataframe and return a cluster map of all lat long coordinates and details of property
-    price etc. available on popup'''
+    '''
+    returns map of all rows of a dataframe that contain 'latitude' and 'longitude' columns
+    price and address of all properties are available by clicking on the marker
+    
+    Parameters:
+    df: df which contains 'latitude' and 'longitude' columns
+    
+    '''
     #Create base map zoomed in to seattle
     map4=folium.Map(location=[47.5837012,-122.3984634],  tiles=None, zoom_start=7)
     folium.TileLayer('cartodbpositron', name='King County House Prices').add_to(map4)
