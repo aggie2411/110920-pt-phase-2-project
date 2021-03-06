@@ -6,7 +6,7 @@ This repository offers an analysis of factors that influence housing prices in K
 ### Quick Links
 
 1. [Final Analysis Notebook](notebooks/report/modelling.ipynb)
-2. [Presentation Slides](reports/King County House Price - MLR.pdf)
+2. [Presentation Slides](reports/presentation.pdf)
 
 ### Setup Instructions
 
