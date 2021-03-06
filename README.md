@@ -59,6 +59,8 @@ The model struggles towards the more expensive end of the sales prices, as can b
 
 Despite best efforts, the residuals plot shows the homoscedasticity assumption isn't honoured as well as it could be, the normality of residuals also isn't as good as I would like. As can be seen by the table, I did refine this model further (7b), eliminating features with high VIF numbers. This reduced the JB number slightly but R-Squared suffered. 
 
+![graph6](./images/summarytable.PNG)
+
 
 
 ![graph6](./images/qq.png)
