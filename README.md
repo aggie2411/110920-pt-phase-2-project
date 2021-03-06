@@ -44,7 +44,7 @@ Data has been provided from [King County GIS Center](https://www.kingcounty.gov/
 ## Data Understanding
 
 King County is the most expensive County in Washington and home to some of the most expensive homes in the United States.
-Within King County there is a big variation in property prices, but as can be seen from the map which represents each Zip Code in Washington and its average house price, the most expensive (dark red) are near Bellevue, Mercer Island and Medina. Like everywhere else in the world, location matters..
+Within King County there is a big variation in property prices, but as can be seen from the map which represents each Zip Code in Washington and its average house price, the most expensive (dark red) are near Bellevue, Mercer Island and Medina. Like everywhere else in the world, location matters..I will create a feature that defines the minimum distance to 4 expensive areas in King County.
 
 ![graph1](./images/zip_house_price.PNG)
 
@@ -112,3 +112,13 @@ This is a slightly ambiguous feature, however it is assumed this means the gener
 #### Fix Issues
 
 Assuming all other variables are kept the same, a home with a water issue or some other unspecified will be worth 18,960USD less than a home that is issue free.
+
+## Further Work
+
+As has already been established the model struggled with some of the higher value properties. I mapped the 200 worst offenders (biggest difference between predicted and actual), to check I wasn't missing one particularly desirable zone. It turned out as they were quite well spread out although from the map it is clear many of them are very close to water. It would be useful to engineer a feature that establishes the minimum distance to a water body. Example below is a property right on Lake Sammahish which is undervalued in the model.
+
+![graph7](./improvements/qq.png)
+
+
+Other features I would like to explore with time is proximity to good transport links, average commuting time to downtown Seattle and proximity to good schools.
+
