@@ -43,22 +43,72 @@ Data has been provided from [King County GIS Center](https://www.kingcounty.gov/
 
 ## Data Understanding
 
-TODO: add data understanding, including at least 3 high-quality visualizations
+King County is the most expensive County in Washington and home to some of the most expensive homes in the United States.
+Within King County there is a big variation in property prices, but as can be seen from the map which represents each Zip Code in Washington and its average house price, the most expensive (dark red) are near Bellevue, Mercer Island and Medina. Like everywhere else in the world, location matters..
 
 ![graph1](./images/zip_house_price.PNG)
 
+Not only does location matter, there is a strong linear relationship with Building Grade too, this could be an important feature in the workflow.
+
+![graph2](./images/bldggrade.png)
+
+So building grade impacts price, but so does the view. View utilization which seems an intangible metric but it pays...homes with a view have a nice premium associated with them. This could be an important feature
+
+![graph3](./images/views.png)
+
+Square Footage can have interesting relationships with home prices, given the trade off of location vs space. However in the case of King County, it appears there is a positive linear relation with square footage total living area.
+
+![graph4](./images/sqft.png)
+
+
 ## Data Preparation
 
-TODO: add data preparation (which can be quite brief, but make sure you explain any dropped records)
+For detailed walk through of this, please refer to the [cleaning notebook](notebooks/report/final_cleaning.ipynb). There were many columns that were either blank, had many NaNs, or were filled with only one value for example 'N'. I tried to keep as many columns as possible until the first pass of the modeling phase as I did not want to discount something which could be important. 
 
 ## Modeling
 
-TODO: add modeling.  What are the features of your final model?
+The final model that was selected for recommendations had 119 features, many of which were dummies including Zip Code which makes up the majority of features. Most of the features are significant, however, I have not gone through the process of removing variables purely for insignificance. I have check for multicollinearity and tried to reduce that as much as possible using variable inflation factor.
+
+The model has an R-Squared of 83.5 meaning it explains 83.5% of the variance in Sale Price. There are some areas that are worse than others in terms of error, meaning homoscedasticity hasn't been fully honoured despite efforts.
+
+The model struggles towards the more expensive end of the sales prices, as can be seen from the residuals plot.
+
+![graph5](./images/modelvsactual.png)
+
 
 ## Evaluation
 
-TODO: add evaluation.  How well does your model meet the assumptions of linear regression?
+Despite best efforts, the residuals plot shows the homoscedasticity assumption isn't honoured as well as it could be, the normality of residuals also isn't as good as I would like. As can be seen by the table, I did refine this model further, eliminating features with high VIF numbers. This reduced the JB number slightly but R-Squared suffered. 
+
+![graph6](./images/qq.png)
+
 
 ## Conclusion
 
-TODO: add conclusion.  How does your model answer the business question?
+The following recommendations could be made based on the findings from the model
+
+
+#### Increase Living Space
+
+For every one square foot of total living space you add to a property, its price will increase by 119 USD assuming all other variables are kept constant. i.e if you add 500 square feet of living space this could add up to 60,000USD to the price. This is not an improvement that would be available in every property. 
+
+
+#### Add Bathroom
+
+The bedbath feature was simply bedroom count subracting bathroom count. As this approaches zero or better still goes negative  (i.e you have equal number of bathrooms to bedrooms or more bathrooms than bedrooms) the Sale Price improves. If you improve this ratio by one i.e add one total bathroom this will increase the house price by 29420 USD if all other variables are held constant.
+
+#### Renovation 
+
+Renovating a house can me expensive but it can be worth it. The coefficient of the renovation feature is 58,220USD. Meaning if you renovate the house on average it will increase the house price by 58,220USD.
+
+#### Install Porch
+
+The interpretation of the coefficient for having a porch suggests having a porch will increase the price of your property by 17,560USD. 
+
+#### Improve general condition
+
+This is a slightly ambiguous feature, however it is assumed this means the general condition of the property. The difference here is stark though, assuming all other variables are kept the same, a 'good' condition home will sell for 33,950USD more than an 'average' condition property. for 'very good' this is even more - 70,980USD. 
+
+#### Fix Issues
+
+Assuming all other variables are kept the same, a home with a water issue or some other unspecified will be worth 18,960USD less than a home that is issue free.
