@@ -2,32 +2,11 @@
 
 This repository offers an analysis of factors that influence housing prices in King County, WA
 
-## This Repository
-
-### Repository Directory
-
-```
-├── README.md        <-- Main README file explaining the project's business case,
-│                        methodology, and findings
-│
-├── data             <-- Data in CSV format
-│   ├── processed    <-- Processed (combined, cleaned) data used for modeling
-│   └── raw          <-- Original (immutable) data dump
-│
-├── notebooks        <-- Jupyter Notebooks for exploration and presentation
-│   ├── exploratory  <-- Unpolished exploratory data analysis (EDA) notebooks
-│   └── report       <-- Polished final notebook(s)
-│
-├── references       <-- Data dictionaries, manuals, and project instructions
-│
-└── reports          <-- Generated analysis (including presentation.pdf)
-    └── figures      <-- Generated graphics and figures to be used in reporting
-```
 
 ### Quick Links
 
 1. [Final Analysis Notebook](notebooks/report/modelling.ipynb)
-2. [Presentation Slides](reports/presentation.pdf)
+2. [Presentation Slides](reports/King County House Price - MLR.pdf)
 
 ### Setup Instructions
 
@@ -124,4 +103,27 @@ As has already been established the model struggled with some of the higher valu
 
 
 Other features I would like to explore with time is proximity to good transport links, average commuting time to downtown Seattle and proximity to good schools.
+
+## This Repository
+
+### Repository Directory
+
+```
+├── README.md        <-- Main README file explaining the project's business case,
+│                        methodology, and findings
+│
+├── data             <-- Data in CSV format
+│   ├── processed    <-- Processed (combined, cleaned) data used for modeling
+│   └── raw          <-- Original (immutable) data dump
+    └── provided     <-- Provided data 
+│
+├── notebooks        <-- Jupyter Notebooks for exploration and presentation
+│   ├── old          <-- Unpolished exploratory data cleaning and preliminary analysis (EDA) notebooks
+│   └── report       <-- Polished final notebook(s)
+│
+├── references       <-- Data dictionaries, manuals, and project instructions
+│
+└── reports          <-- Generated analysis (including presentation.pdf)
+
+```
 
