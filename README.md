@@ -120,7 +120,7 @@ Assuming all other variables are kept the same, a home with a water issue or som
 
 As has already been established the model struggled with some of the higher value properties. I mapped the 200 worst offenders (biggest difference between predicted and actual), to check I wasn't missing one particularly desirable zone. It turned out as they were quite well spread out although from the map it is clear many of them are very close to water. It would be useful to engineer a feature that establishes the minimum distance to a water body. Example below is a property right on Lake Sammahish which is undervalued in the model.
 
-![graph7](./improvements/qq.PNG)
+![graph7](./images/improvements.PNG)
 
 
 Other features I would like to explore with time is proximity to good transport links, average commuting time to downtown Seattle and proximity to good schools.
